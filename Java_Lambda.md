@@ -25,17 +25,36 @@ And then you remove the function name and everything before that, like so
 ```
 
 So what's good about it?
-- the beauty about lambdas is you can assign it to a variable and treat it like a variable. This also means you can pass it around as a parameter, etc...
+- The beauty about lambdas is you can assign it to a variable and treat it like a variable. This also means you can pass it around as a parameter, etc... It's another way of abstraction.
 
-- you can do some
+Why is it a good thing? 
+- Generally, it would make your code more concise. 
 
-Why is it useful? Why do I need to know this?
 
 But you may ask, almost everything in Java is an object, how will this be possible?
 
 In Java the way they achieve this is by wrapping it in a class with only 1 method. And it implement a Functional Interface.
 
 And Java provides a syntactic sugar so that *it hides* the class and method implementations and only show you the parameters and function body.
+
+In our example above converting it to a proper lambda:
+```
+name -> System.out.println("Hello " + name);
+```
+
+So how did we come up with this?
+
+Remember in Java almost everything is an object. In this case here, Java is wrapping this up in an object at runtime.
+
+It probably looks like this:
+```
+    class NameGreeter<String> implements Consumer<String>{
+        @Override
+        public void accept(String name) {
+            System.out.println("Hello " + name);
+        }
+    }
+```
 
 For me the key in learning Lambdas is understand Functional Interfaces and how to use them.
 
@@ -60,11 +79,12 @@ For me the key in learning Lambdas is understand Functional Interfaces and how t
 
 ```
 
-
-
-
 Everything in Java is still an object and Java Lambda is also an object
 
 If you look into the parameters, it's still asking for an object of type Supplier. And Supplier is an interface with only one method that has a specific signature.
 
-Test commit
+The key to understading Functional Interfaces is to understand their method signatures.
+
+When I see an inteface with a @FunctionInterface annotation I think of it as one method wrapped in an object.
+
+If we see a parameter of type interface, it means that we need to pass an object that implements that interface.
