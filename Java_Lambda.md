@@ -38,3 +38,5 @@ For me the key in learning Lambdas is understand Functional Interfaces and how t
 Everything in Java is still an object and Java Lambda is also an object
 
 If you look into the parameters, it's still asking for an object of type Supplier. And Supplier is an interface with only one method that has a specific signature.
+
+Not sure why this is not committing properly?
