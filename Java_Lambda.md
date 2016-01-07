@@ -47,6 +47,14 @@ Consumer<String> hiGreeter = name -> {
                                             System.out.println("How you doin?"); 
                                         };
 ```
+
+Java gives us a new symbol **->** *the arrow* to denote a lambda. The left-hand side of the arrow is for your parameters and the right-hand side is for the function body.
+
+If you want to pass multiple parameters to your lambda, enclose it with parenthesis:
+```
+(name, surname) -> System.out.println("My name is: " + name + " " + surname) ;
+```
+
 A good analogy of a lambda is to think of it as a block of code and you can treat as a variable.
 
 Notice the ```Consumer<String>``` object type? Understanding that is the key to understanding lambdas and using it straight away!
@@ -60,6 +68,30 @@ public interface Consumer<T> {
 ```
 
 It's only an interface with one method that accepts a type and returns nothing, and it has a @FunctionalInterface annotation.
+
+The key here is the @FunctionalInterface annotation, it tells Java that you want to use it as a lambda. 
+
+The @FunctionalInterface annotation only lets you define one abstract method in your interface. And this is how Java wraps your lambda into an object under the hood.
+
+In our above example, Java would probably wrap it similar to this:
+```Java
+    class SomeRandomGeneratedClassName<String> implements Consumer<String>{
+        @Override
+        public void accept(String name) {
+            System.out.println("Hello " + name);
+        }
+    }
+```
+
+Lambda equivalent:
+```Java
+    name -> System.out.println("Hello " + name);
+```
+
+
+
+So why did I explain all of this? Because in order to use lambdas in Java 8 you'll be working with Functional Interfaces all the time.
+
 
 Why is it a good thing? 
 - Generally, it would make your code shorter/less verbose. A lot more expressive and cleaner.
@@ -79,15 +111,7 @@ So how did it come up like this?
 
 Remember in Java almost everything is an object. In this case here, Java is wrapping this up in an object under the hood.
 
-Java would probably wrap it similar to this:
-```Java
-    class SomeRandomGeneratedClassName<String> implements Consumer<String>{
-        @Override
-        public void accept(String name) {
-            System.out.println("Hello " + name);
-        }
-    }
-```
+
 
 And how will Java know it will convert it to a Lambda? The secret is in 
 
