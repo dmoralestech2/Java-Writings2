@@ -6,7 +6,7 @@ My purpose here is to bring you up to speed in using the lambda features of Java
 
 Let's get into it.
 
-What is a lambda? Lambdas are anonymous functions. Functions with no names. It only contains parameters and function body.
+What is a lambda? In simple java term, Lambdas are functions with no name. They are called anonymous functions. It only contains parameters and function body.
 
 If you want to picture it, just imagine a function like:
 ```Java
@@ -30,6 +30,8 @@ So what's good about it?
 Why is it a good thing? 
 - Generally, it would make your code shorter/less verbose. A lot more expressive and cleaner.
 
+
+The secret in using lambdas straight-away in Java is having a good understanding of Functional Interface. Remember that almost everything in Java is an Object? This is how Java wraps those anonymous functions that were created into objects.
 
 But you may ask, almost everything in Java is an object, how will this be possible?
 
