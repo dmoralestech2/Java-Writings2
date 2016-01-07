@@ -27,29 +27,46 @@ And then you remove the function name and everything before that, like so
 So what's good about it?
 - The beauty about lambdas is you can assign it to a variable and treat it like a variable. This also means you can pass it around as a parameter, return it from a function, store it in an array or a collection, etc...  It's another way of abstraction.
 
+In our example above converting it to a proper lambda would be:
+```Java
+name -> System.out.println("Hello " + name);
+```
+
+And since it's a function you're not limited to only one line:
+```Java
+name -> { 
+            System.out.println("Hello " + name);
+            System.out.println("Some other text...");
+            System.out.println("Have a nice day");
+        };
+```
+
+and you can assign it in a variable:
+```Java
+Consumer<String> nameGreeter = name -> System.out.println("Hello " + name);
+Consumer<String> nameGreeter2 = name -> { 
+                                            System.out.println("Hi " + name); 
+                                            System.out.println("How you doin?"); 
+                                        };
+```
+
+Just think of lambdas as a block of code that you can treat as a variable.
+
+I'll explain in a while what's the ```Consumer<String>``` object type is.
+
 Why is it a good thing? 
 - Generally, it would make your code shorter/less verbose. A lot more expressive and cleaner.
 
-
 The secret in using lambdas straight-away in Java is having a good understanding of Functional Interface. Remember that almost everything in Java is an Object? This is how Java wraps those anonymous functions that were created into objects.
+
+
+
 
 But you may ask, almost everything in Java is an object, how will this be possible?
 
 In Java the way they achieve this is by wrapping it in a class with only 1 method. And it implement a Functional Interface.
 
 And Java provides a syntactic sugar so that *it hides* the class and method implementations and only show you the parameters and function body.
-
-In our example above converting it to a proper lambda:
-```Java
-name -> System.out.println("Hello " + name);
-```
-
-and you can assign it in a variable:
-```Java
-Consumer<String> nameGreeter = name -> System.out.println("Hello " + name);
-```
-
-I'll explain in a while what's the ```Consumer<String>``` object type is.
 
 So how did it come up like this?
 
