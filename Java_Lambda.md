@@ -6,9 +6,7 @@ My purpose here is to bring you up to speed in using the lambda features of Java
 
 Let's get into it.
 
-What is a lambda? In simple java term, Lambdas are functions with no name. They are called anonymous functions. It only contains parameters and function body.
-
-If you want to picture it, just imagine a function like:
+What is a lambda? In simple java term, Lambdas are functions with no name.  They are also called anonymous functions. It only contains parameters and function body.  If you want to picture it, just imagine a function like:
 ```Java
 \\Normal function
 public void greetName(String name) {
@@ -16,7 +14,7 @@ public void greetName(String name) {
 }
 ```
 
-And then you remove the function name and everything before that, like so
+And then you remove the function name and everything before that, like so:
 ```Java
 \\ A primitive lambda - which is not too far away from the real thing!
 (String name) {
@@ -27,12 +25,12 @@ And then you remove the function name and everything before that, like so
 So what's good about it?
 - The beauty about lambdas is you can assign it to a variable and treat it like a variable. This also means you can pass it around as a parameter, return it from a function, store it in an array or a collection, etc...  It's another way of abstraction.
 
-In our example above converting it to a proper lambda would be:
+In our example above converting it to a proper Java lambda it would be:
 ```Java
 name -> System.out.println("Hello " + name);
 ```
 
-And since it's a function you're not limited to only one line:
+And since it's a function with no name, you're not limited to only one line:
 ```Java
 name -> { 
             System.out.println("Hello " + name);
@@ -43,16 +41,25 @@ name -> {
 
 and you can assign it in a variable:
 ```Java
-Consumer<String> nameGreeter = name -> System.out.println("Hello " + name);
-Consumer<String> nameGreeter2 = name -> { 
+Consumer<String> helloGreeter = name -> System.out.println("Hello " + name);
+Consumer<String> hiGreeter = name -> { 
                                             System.out.println("Hi " + name); 
                                             System.out.println("How you doin?"); 
                                         };
 ```
+A good analogy of a lambda is to think of it as a block of code and you can treat as a variable.
 
-Just think of lambdas as a block of code that you can treat as a variable.
+Notice the ```Consumer<String>``` object type? Understanding that is the key to understanding lambdas and using it straight away!
 
-I'll explain in a while what's the ```Consumer<String>``` object type is.
+So what is that ```Consumer<String>```? If you go to it's declaration:
+```Java
+@FunctionalInterface
+public interface Consumer<T> {
+    void accept(T t);
+}    
+```
+
+It's only an interface with one method that accepts a type and returns nothing, and it has a @FunctionalInterface annotation.
 
 Why is it a good thing? 
 - Generally, it would make your code shorter/less verbose. A lot more expressive and cleaner.
@@ -85,12 +92,7 @@ Java would probably wrap it similar to this:
 And how will Java know it will convert it to a Lambda? The secret is in 
 
 
-```Java
-@FunctionalInterface
-public interface Consumer<T> {
-    void accept(T t);
-}    
-```
+
 
 @FunctionalInterface tells Java that you want to use lambda.
 
