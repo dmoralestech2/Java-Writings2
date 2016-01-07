@@ -2,7 +2,7 @@
 
 Just want to share with you how I understand Java 8 Lambda. I've been learning about it the past couple of months.
 
-My purpose here is to make you up to speed in using lambdas in your project. And hopefully convince you to use it.
+My purpose here is to bring you up to speed in using the lambda features of Java 8 in your project.
 
 Let's get into it.
 
@@ -25,11 +25,10 @@ And then you remove the function name and everything before that, like so
 ```
 
 So what's good about it?
-- The beauty about lambdas is you can assign it to a variable and treat it like a variable. This also means you can pass it around as a parameter, etc... It's another way of abstraction.
+- The beauty about lambdas is you can assign it to a variable and treat it like a variable. This also means you can pass it around as a parameter, return it from a function, store it in an array or a collection, etc... basically you can do what any variable would do. It's another way of abstraction.
 
 Why is it a good thing? 
-- Generally, it would make your code more concise. 
-
+- Generally, it would make your code shorter/less verbose. 
 
 But you may ask, almost everything in Java is an object, how will this be possible?
 
@@ -42,19 +41,38 @@ In our example above converting it to a proper lambda:
 name -> System.out.println("Hello " + name);
 ```
 
-So how did we come up with this?
-
-Remember in Java almost everything is an object. In this case here, Java is wrapping this up in an object at runtime.
-
-It probably looks like this:
+and you can assign it in a variable:
 ```
-    class NameGreeter<String> implements Consumer<String>{
+Consumer<String> nameGreeter = name -> System.out.println("Hello " + name);
+```
+
+I'll explain in a while what's the ```Consumer<String>``` object type is.
+
+So how did it come up like this?
+
+Remember in Java almost everything is an object. In this case here, Java is wrapping this up in an object under the hood.
+
+Java would probably wrap it similar to this:
+```
+    class SomeRandomGeneratedClassName<String> implements Consumer<String>{
         @Override
         public void accept(String name) {
             System.out.println("Hello " + name);
         }
     }
 ```
+
+And how will Java know it will convert it to a Lambda? The secret is in 
+
+
+```
+@FunctionalInterface
+public interface Consumer<T> {
+    void accept(T t);
+}    
+```
+
+@FunctionalInterface tells Java that you want to use lambda.
 
 For me the key in learning Lambdas is understand Functional Interfaces and how to use them.
 
