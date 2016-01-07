@@ -14,6 +14,7 @@ If you want to picture it, just imagine a function like:
 public void greetName(String name) {
     System.out.println("Hello " + name);
 }
+```
 
 And then you remove the function name and everything before that, like so
 ```
