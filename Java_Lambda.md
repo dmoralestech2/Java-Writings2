@@ -2,15 +2,15 @@
 
 Just want to share with you how I understand Lambdas in Java 8. I've been learning about it the past couple of months.
 
-My purpose here is to bring you up to speed in using the lambda features of Java 8 in your project.
-
 Please note that I'm not going to talk here about functional programming or its benefits or beauty(probably on a another post).
+
+My purpose here is to bring you up to speed in using the lambda features of Java 8 in your project.
 
 Let's get into it.
 
-What is a lambda? In simple java layman terms, Lambdas are functions with no name.  They are also called anonymous functions. It only contains parameters and function body.  If you want to picture it, just imagine a function like:
+What is a lambda? In simple java layman terms, Lambdas are functions with no name.  They are also called anonymous functions. It only contains parameters and function body.  If you want to picture it what it looks like, just imagine a noram Java function:
 ```Java
-\\Normal function
+\\some ordinary function
 public void greet(String name) {
     System.out.println("Hello " + name);
 }
