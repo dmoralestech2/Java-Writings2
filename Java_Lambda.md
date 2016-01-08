@@ -10,7 +10,7 @@ Let's get into it.
 
 What is a lambda? In simple java layman terms, Lambdas are functions with no name.  They are also called anonymous functions. It only contains parameters and function body.  If you want to picture it what it looks like, just imagine a noram Java function:
 ```Java
-\\some ordinary function
+\\some ordinary Java function
 public void greet(String name) {
     System.out.println("Hello " + name);
 }
@@ -25,14 +25,14 @@ And then you remove the function name and everything before that, like so:
 ```
 
 So what's good about it?
-- The great thing about lambdas is you can assign it to a variable and treat it like a variable. This also means you can pass it around as a parameter, return it from a function, store it in an array or a collection, etc...  It's another way of abstraction and it lets you write shorter code and hopefully more expressive.
+- The great thing about lambdas is you can assign treat that block of code as if it was a variable and do things a variable would do. This also means you can pass it around as a parameter, return it from a function, store it in an array or a collection, etc...  It's another way of abstraction and it lets you write shorter code and hopefully more expressive.
 
-In our example above converting it to a proper Java lambda it would be:
+In our example above, converting it to a proper Java lambda it would be:
 ```Java
 name -> System.out.println("Hello " + name);
 ```
 
-And since it's a function with no name, you're not limited to only one line:
+And since it's a function, you're not limited to only one line:
 ```Java
 name -> { 
             System.out.println("Hello " + name);
